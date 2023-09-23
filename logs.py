@@ -1,6 +1,4 @@
 #%%
-import requests
-import json
 import random
 import backoff
 import logging
@@ -21,7 +19,7 @@ def test_func(*args, **kargs):
     log.debug(f"RND: {rnd} ")
     log.info(f"args: {args if args else 'sem args'}")
     log.info(f"kargs: {kargs if kargs else 'sem kargs'}")
-    
+
     if rnd < .2:
         raise ConnectionAbortedError('Conexao foi finalizada')
     elif rnd < .4:
