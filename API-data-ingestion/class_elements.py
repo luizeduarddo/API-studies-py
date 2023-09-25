@@ -49,5 +49,31 @@ curriculum_luiz = Curriculum(
     experiencies=['CNPQ', 'UFC', 'SECFIN', 'ENGIMAGEM']
 )
 
-print(curriculum_luiz.person.age)
 print(curriculum_luiz)
+
+class Living:
+    def __init__(self, name: str, birth_date:datetime.date) -> None:
+        self.name = name
+        self.birth_date = birth_date
+    
+    @property
+    def age(self) -> int:
+        return math.floor((datetime.date.today() - self.birth_date).days / 365.2425)
+    
+class Personinheritance(Living):
+    def __str__(self) -> str:
+        return f"{self.name} has {self.age} years"
+
+class Dog(Living):
+    def __init__(self, name: str, birth_date: datetime.date, breed: str) -> None:
+        super().__init__(name, birth_date)
+        self.breed = breed
+    
+    def __str__(self) -> str:
+        return f"{self.name} is from the breed {self.breed} and has {self.age} years"
+
+luiz2= Personinheritance(name='Luiz Eduardo', birth_date=datetime.date(1996, 1, 11))
+print(luiz2)
+
+nikinha = Dog(name= 'Nikinha', birth_date=datetime.date(2022, 1, 14), breed= 'Mixed Breed')
+print(nikinha)
